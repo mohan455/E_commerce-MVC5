@@ -14,7 +14,7 @@ namespace ShoppingCart_ASP.NET_MVC5.Controllers
         {
             Customer customer = null;
             List<Customer> customerlist = new List<Customer>();
-            using (SqlConnection conn = new SqlConnection(("Server=.; Database=ShoppingCartT4; Integrated Security=true")))
+            using (SqlConnection conn = new SqlConnection(("Server=MOHAN\\SQLEXPRESS01; Database=ShoppingCartT4; Integrated Security=true")))
             {
                 conn.Open();
                 string sql = @"SELECT customer_id, username, firstname, password from Customer WHERE username = '" + username + "'";

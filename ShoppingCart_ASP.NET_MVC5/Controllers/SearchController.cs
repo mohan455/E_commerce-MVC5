@@ -21,7 +21,7 @@ namespace ShoppingCart_ASP.NET_MVC5.Controllers
                 ViewBag.a = "Please enter a search item in the search box..";
             }
             List<Product> pro = new List<Product>();
-            using (SqlConnection conn = new SqlConnection("Server=.; Database=ShoppingCartT4; Integrated Security=true"))
+            using (SqlConnection conn = new SqlConnection("Server=MOHAN\\SQLEXPRESS01; Database=ShoppingCartT4; Integrated Security=true"))
             {
                 conn.Open();
                 string sql = @"select * from Product where pro_desc like '%"+ search +"%'";

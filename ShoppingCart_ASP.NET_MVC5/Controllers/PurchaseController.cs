@@ -30,7 +30,7 @@ namespace ShoppingCart_ASP.NET_MVC5.Controllers
             {
                 if (i.Any(Char.IsDigit))
                 {
-                    using (SqlConnection conn = new SqlConnection("Server=.; Database=ShoppingCartT4; Integrated Security=true"))
+                    using (SqlConnection conn = new SqlConnection("Server=MOHAN\\SQLEXPRESS01; Database=ShoppingCartT4; Integrated Security=true"))
                     {
                         conn.Open();
                         string sql = @"select * from Product where pro_id = '" + i + "'";
@@ -76,7 +76,7 @@ namespace ShoppingCart_ASP.NET_MVC5.Controllers
                     for (int j = 0; j < int.Parse(Request.Cookies[i].Value); j++)
                     {
                         string guid = System.Guid.NewGuid().ToString();
-                        using (SqlConnection conn = new SqlConnection("Server=.; Database=ShoppingCartT4; Integrated Security=true"))
+                        using (SqlConnection conn = new SqlConnection("Server=MOHAN\\SQLEXPRESS01; Database=ShoppingCartT4; Integrated Security=true"))
                         {
                             conn.Open();
                             string sql = @"INSERT INTO Purchaseitem (customer_id,pro_id,activation_code,purchase_time) " +
@@ -120,7 +120,7 @@ namespace ShoppingCart_ASP.NET_MVC5.Controllers
         {
             string customer_id = Request.Cookies["customer_id"].Value;
             List<PurchaseItems> allitems = new List<PurchaseItems>();
-            using (SqlConnection conn = new SqlConnection("Server=.; Database=ShoppingCartT4; Integrated Security=true; MultipleActiveResultSets=True"))
+            using (SqlConnection conn = new SqlConnection("Server=MOHAN\\SQLEXPRESS01; Database=ShoppingCartT4; Integrated Security=true; MultipleActiveResultSets=True"))
             {
                 conn.Open();
                 string sql = @"select purchase_time, i.pro_id, pro_name, pro_desc, pro_image, count(i.pro_id) as count from Purchaseitem i join Product p on i.pro_id = p.pro_id where customer_id ='" + customer_id + "' group by i.pro_id, purchase_time, pro_name, pro_desc, pro_image";
@@ -138,7 +138,7 @@ namespace ShoppingCart_ASP.NET_MVC5.Controllers
                     singleitem.count = (int)reader["count"];
                     List<string> arr = new List<string>();
 
-                    using (SqlConnection conn1 = new SqlConnection("Server=.; Database=ShoppingCartT4; Integrated Security=true; MultipleActiveResultSets=True"))
+                    using (SqlConnection conn1 = new SqlConnection("Server=MOHAN\\SQLEXPRESS01; Database=ShoppingCartT4; Integrated Security=true; MultipleActiveResultSets=True"))
                     {
                         conn1.Open();
 

@@ -15,7 +15,7 @@ namespace ShoppingCart_ASP.NET_MVC5.Dao
             Debug.WriteLine(customer_id);
             List<AllItemList> Listall = new List<AllItemList>();
             Debug.WriteLine(customer_id);
-            using (SqlConnection conn = new SqlConnection(("Server=.; Database=ShoppingCartT4; Integrated Security=true")))
+            using (SqlConnection conn = new SqlConnection(("Server=MOHAN\\SQLEXPRESS01; Database=ShoppingCartT4; Integrated Security=true")))
             {
                 Debug.WriteLine("came her");
                 conn.Open();

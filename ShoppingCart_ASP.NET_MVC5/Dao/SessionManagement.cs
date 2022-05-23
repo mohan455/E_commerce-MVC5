@@ -16,7 +16,7 @@ namespace ShoppingCart_ASP.NET_MVC5.Controllers
             string sessionId = Guid.NewGuid().ToString();
             Debug.WriteLine("Customer id" + customer_id);
             Debug.WriteLine("Session id" + sessionId);
-            using (SqlConnection conn = new SqlConnection("Server=.; Database=ShoppingCartT4; Integrated Security=true"))
+            using (SqlConnection conn = new SqlConnection("Server=MOHAN\\SQLEXPRESS01; Database=ShoppingCartT4; Integrated Security=true"))
             {
                 conn.Open();
                 string sql = @"UPDATE Customer SET session_id = '" + sessionId + "'" + " WHERE customer_id =" + customer_id;
@@ -36,7 +36,7 @@ namespace ShoppingCart_ASP.NET_MVC5.Controllers
                 c.Expires = DateTime.Now.AddMonths(-1);
                 HttpContext.Current.Response.AppendCookie(c);
             } 
-            using (SqlConnection conn = new SqlConnection("Server=.; Database=ShoppingCartT4; Integrated Security=true"))
+            using (SqlConnection conn = new SqlConnection("Server=MOHAN\\SQLEXPRESS01; Database=ShoppingCartT4; Integrated Security=true"))
             {
                 conn.Open();
                 string sql = @"UPDATE Customer SET session_id = NULL WHERE session_id = '" + sessionId + "'";

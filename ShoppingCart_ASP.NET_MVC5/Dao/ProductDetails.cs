@@ -13,7 +13,7 @@ namespace ShoppingCart_ASP.NET_MVC5.Controllers
         public static List<Product> callme()
         {
             List<Product> pro = new List<Product>();
-            using (SqlConnection conn = new SqlConnection(("Server=.; Database=ShoppingCartT4; Integrated Security=true")))
+            using (SqlConnection conn = new SqlConnection(("Server=MOHAN\\SQLEXPRESS01; Database=ShoppingCartT4; Integrated Security=true")))
             {
                 conn.Open();
                 string sql = @"SELECT * from Product";
